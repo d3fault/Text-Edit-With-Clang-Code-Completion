@@ -1,0 +1,26 @@
+Text Edit with Clang Code Completion
+
+Pretty self-explanatory. Took a bunch of code from a Clang code completion example ( https://gist.github.com/Rip-Rip/758615 ) and the "Custom Completer" example that comes with Qt. Tried to keep it short and sweet by skipping lots of unnecessary bits in the custom completer example.
+
+Qt + Clang = <3
+
+
+Tested on Debian Wheezy
+
+PREREQUISITES
+
+Of course you need Qt dev packages installed. For libclang, even though the target is Debian Wheezy, you need the Jessie (3.4 at time of writing) build of LLVM/Clang, so put the following line in your /etc/apt/sources.list
+
+deb http://http.debian.net/debian/ jessie main
+
+Then:
+
+# apt-get update
+# apt-get install -t jessie libclang-3.4-dev llvm-3.4-dev
+
+BUILD INSTRUCTIONS
+
+Clone this repo and cd into it as normal user, then:
+
+$ qmake
+$ make
