@@ -5,18 +5,14 @@ Pretty self-explanatory. Took a bunch of code from a Clang code completion examp
 Qt + Clang = <3
 
 
-Tested on Debian Wheezy
+Tested on Debian Jessie
 
 PREREQUISITES
 
-Of course you need Qt dev packages installed. For libclang, even though the target is Debian Wheezy, you need the Jessie (3.4 at time of writing) build of LLVM/Clang, so put the following line in your /etc/apt/sources.list
+Of course you need Qt dev packages installed.
 
-deb http://http.debian.net/debian/ jessie main
-
-Then:
-
-# apt-get update
-# apt-get install -t jessie libclang-3.4-dev llvm-3.4-dev
+For libclang:
+# apt-get install libclang-dev llvm-dev
 
 BUILD INSTRUCTIONS
 
@@ -24,3 +20,9 @@ Clone this repo and cd into it as normal user, then:
 
 $ qmake
 $ make
+
+KNOWN ISSUES
+
+Completion fails with the following one liner:
+struct x { void y() { } }; static void a() x x1; x1. }
+If you put your cursor after the "x1." and press ctrl+space, nothing happens (it should show auto-completion for y). The workaround is to move the very last closing curly brace onto the line below. I have no idea why this happens, if anyone does please let me know.

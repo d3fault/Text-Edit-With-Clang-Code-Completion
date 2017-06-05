@@ -21,5 +21,5 @@ DEFINES += _GNU_SOURCE
 DEFINES += __STDC_CONSTANT_MACROS
 DEFINES += __STDC_FORMAT_MACROS
 DEFINES += __STDC_LIMIT_MACROS
-INCLUDEPATH += "/usr/lib/llvm-3.4/include"
-LIBS += -L/usr/lib/llvm-3.4/lib -lclang
+INCLUDEPATH += $$system('llvm-config --includedir')
+LIBS += -L$$system('llvm-config --libdir') -lclang
